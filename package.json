@@ -1,0 +1,63 @@
+{
+  "name": "krypton-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node -r ./tsconfig-paths-bootstrap.js .",
+    "start:dev": "node -r dotenv/config -r tsconfig-paths/register -r ts-node/register ./src/index.ts",
+    "dev": "nodemon",
+    "test:unit": "mocha --recursive -r tsconfig-paths/register -r ts-node/register -r source-map-support/register src/**/*.spec.ts",
+    "test:lint": "eslint --ext .ts ./src",
+    "test:lint:fix": "npm run test:lint -- --fix",
+    "test": "npm run test:lint && npm run test:unit"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "npm run start:dev",
+    "ext": "ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "eslint-global-patch": "^1.0.4",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.17.1",
+    "@types/chai": "^4.2.7",
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.2",
+    "@types/mocha": "^5.2.7",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^5.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^7.0.0",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-node": "^8.5.4",
+    "tsconfig-paths": "^3.9.0",
+    "typescript": "^3.7.4"
+  }
+}
